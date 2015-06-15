@@ -81,16 +81,16 @@ Public Class Student_Module
         Dim INDEX As Integer = 1
         Dim example As Integer = 0
 
-        'Do While example <= 10
-        'While INDEX < Currword
-        If TB_Cloze.Text = ("(" & INDEX & ")______") Then
-            'Else
-            TB_Cloze.Text = Replace(TB_Cloze.Text, "(" & INDEX & ")______", ComboBox1.Text)
-            INDEX = INDEX + 1
-        End If
-        'End While
-        'example += 1
-        ' Loop
+        Do While example <= 10
+            While INDEX < Currword
+                'If TB_Cloze.Text = ("(" & INDEX & ")______") Then
+                'Else
+                TB_Cloze.Text = Replace(TB_Cloze.Text, "(" & INDEX & ")______", ComboBox1.Text)
+                INDEX = INDEX + 1
+                'End If
+            End While
+                example += 1
+        Loop
     End Sub
 
     Private Sub BTN_Submit_Click(sender As Object, e As EventArgs)
