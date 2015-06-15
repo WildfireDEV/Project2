@@ -79,18 +79,13 @@ Public Class Student_Module
     Private Sub BTN_Replace_Click(sender As Object, e As EventArgs) Handles BTN_Replace.Click
         Dim o As Integer = 1
         Dim INDEX As Integer = 1
-        Dim example As Integer = 0
-
-        Do While example <= 10
-            While INDEX < Currword
-                'If TB_Cloze.Text = ("(" & INDEX & ")______") Then
-                'Else
+        Dim example As Integer = 0 
+            
+            Do While example <= 10 
                 TB_Cloze.Text = Replace(TB_Cloze.Text, "(" & INDEX & ")______", ComboBox1.Text)
                 INDEX = INDEX + 1
-                'End If
-            End While
                 example += 1
-        Loop
+            Loop    
     End Sub
 
     Private Sub BTN_Submit_Click(sender As Object, e As EventArgs)
