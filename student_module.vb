@@ -1,13 +1,25 @@
-Public Class Form1
+Public Class Student_Module
     Dim Currword As String = ""
     Dim data As String
 
+    Private Sub Student_Module_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CutToolStripMenuItem.Enabled = False
+        PrintPreviewToolStripMenuItem.Enabled = False
+        CopyToolStripMenuItem.Enabled = False
+        PasteToolStripMenuItem.Enabled = False
+        SelectAllToolStripMenuItem.Enabled = False
+        CustomizeToolStripMenuItem.Enabled = False
+        OptionsToolStripMenuItem.Enabled = False
+        ContentsToolStripMenuItem.Enabled = False
+        'IndexToolStripMenuItem.Enabled = False
+        'SearchToolStripMenuItem.Enabled = False
+        AboutToolStripMenuItem.Enabled = False
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
 
     End Sub
-    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
 
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         Dim result As DialogResult = OFD_Cloze.ShowDialog()
         Dim file As String = OFD_Cloze.FileName
         Dim FileNum As Integer = FreeFile()
@@ -15,8 +27,7 @@ Public Class Form1
         Dim data As String = ""
         Dim Done As Boolean = False
 
-       
-        If result = Windows.Forms.DialogResult.OK Then   'if the dialog box was successful
+        If result = Windows.Forms.DialogResult.OK Then  ' if the dialog box was successful
             FileOpen(FileNum, file, OpenMode.Input)     ' open file
             Do Until EOF(FileNum)                       ' read line by line to end of file
                 TempLine = LineInput(FileNum)
@@ -65,29 +76,32 @@ Public Class Form1
         End While
 
     End Sub
-
-    Private Sub ComboBox1_TextChanged(sender As Object, e As EventArgs) Handles ComboBox1.TextChanged
-       
-    End Sub
-
     Private Sub BTN_Replace_Click(sender As Object, e As EventArgs) Handles BTN_Replace.Click
-        'Dim o As Integer = 1
+        Dim o As Integer = 1
         Dim INDEX As Integer = 1
-        For i to data.Length
-            'Do Until INDEX > "(" & INDEX & ")______"
-            'While INDEX < Currword
-            'If TB_Cloze.Text = ("(" & INDEX & ")______") Then
-            'Exit While
+        Dim example As Integer = 0
+
+        'Do While example <= 10
+        'While INDEX < Currword
+        If TB_Cloze.Text = ("(" & INDEX & ")______") Then
             'Else
             TB_Cloze.Text = Replace(TB_Cloze.Text, "(" & INDEX & ")______", ComboBox1.Text)
             INDEX = INDEX + 1
-            'End If
-            'End While
-            'Loop
-        Next i
+        End If
+        'End While
+        'example += 1
+        ' Loop
     End Sub
 
-    Private Sub BTN_Submit_Click(sender As Object, e As EventArgs) Handles BTN_Submit.Click
-        'While TB_Cloze.Text(i) = Test.text(i)
+    Private Sub BTN_Submit_Click(sender As Object, e As EventArgs)
+        If TB_Cloze.Text = ClozePassage.CarOv Then
+            MsgBox("Correct")
+        Else
+            MsgBox("THIS IS INCORRECT")
+            End
+        End If
+    End Sub
+    Private Sub Student_Module_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
     End Sub
 End Class
